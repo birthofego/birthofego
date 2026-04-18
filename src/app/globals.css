@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #fafafa;
+  --color-bg-alt: #ffffff;
+  --color-ink: #0a0a0a;
+  --color-ink-soft: #1a1a1a;
+  --color-muted: #6a6a6a;
+  --color-red: #e63946;
+  --color-red-dark: #b91c2c;
+  --color-line: #1a1a1a;
+  --color-line-soft: #e5e5e5;
+
+  --font-pixel: var(--font-pixel), monospace;
+  --font-terminal: var(--font-terminal), monospace;
+
+  --shadow-hard-sm: 4px 4px 0 var(--color-ink);
+  --shadow-hard: 6px 6px 0 var(--color-ink);
+  --shadow-hard-lg: 8px 8px 0 var(--color-ink);
+}
+
+:root {
+  --bg: #fafafa;
+  --bg-alt: #ffffff;
+  --ink: #0a0a0a;
+  --ink-soft: #1a1a1a;
+  --muted: #6a6a6a;
+  --red: #e63946;
+  --red-dark: #b91c2c;
+  --red-soft: rgba(230, 57, 70, 0.08);
+  --line: #1a1a1a;
+  --line-soft: #e5e5e5;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-terminal), monospace;
+  font-size: 20px;
+  line-height: 1.5;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(10, 10, 10, 0.08) 1px, transparent 1.2px);
+  background-size: 24px 24px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
