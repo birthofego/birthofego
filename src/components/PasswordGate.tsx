@@ -28,6 +28,10 @@ export default function PasswordGate({ children }: { children: React.ReactNode }
       localStorage.setItem('birthofego-theme', 'dark');
     }
 
+    const authTime = sessionStorage.getItem('boe_auth_time');
+    if (authTime && Date.now() - parseInt(authTime) < 5 * 60 * 1000) {
+      setAuthenticated(true);
+    }
     setChecking(false);
 
     const bootTimer = setTimeout(() => setBooting(false), 1800);
@@ -44,6 +48,7 @@ export default function PasswordGate({ children }: { children: React.ReactNode }
     e.preventDefault();
     const hash = await sha256(input.trim().toLowerCase());
     if (hash === PASS_HASH) {
+      sessionStorage.setItem('boe_auth_time', Date.now().toString());
       setUnlocking(true);
       setTimeout(() => setAuthenticated(true), 2800);
     } else {
