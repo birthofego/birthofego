@@ -17,16 +17,12 @@ export function Hero() {
         <div className="hero-handle" aria-hidden="true">{content.hero.handle}</div>
         <h1 id="hero-title" className="hero-h1">
           {content.hero.title}
-          <span className="dot" aria-hidden="true">.</span>
           <span className="cursor" aria-hidden="true" />
         </h1>
         <p className="hero-tagline">{content.hero.tagline}</p>
         <p className="hero-subtagline">
           {content.hero.subtagline.before}
           <span className="red">{content.hero.subtagline.red1}</span>
-          {content.hero.subtagline.mid}
-          <span className="red">{content.hero.subtagline.red2}</span>
-          {content.hero.subtagline.after}
         </p>
         <div className="cta-row">
           {content.hero.ctas.map((cta) => (
@@ -61,7 +57,7 @@ export function Hero() {
         }
         .hero-h1 {
           font-family: var(--font-pixel), monospace;
-          font-size: clamp(80px, 18vw, 220px);
+          font-size: clamp(36px, 8vw, 100px);
           color: var(--ink);
           letter-spacing: 6px;
           margin-bottom: 28px;
