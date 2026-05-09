@@ -1,0 +1,559 @@
+/* ── BURN – Nutrition Tracker Styles ── */
+
+body:has(.burn-app) {
+  background: #08080a;
+  margin: 0;
+}
+
+.burn-app {
+  --burn-bg: #08080a;
+  --burn-surface: #111114;
+  --burn-surface-2: #18181c;
+  --burn-border: #1e1e24;
+  --burn-border-light: #2a2a32;
+  --burn-text: #d4d4d8;
+  --burn-text-muted: #5a5a66;
+  --burn-green: #00d68f;
+  --burn-blue: #3b82f6;
+  --burn-orange: #f59e0b;
+  --burn-purple: #8b5cf6;
+  --burn-red: #ef4444;
+  --burn-font: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+  min-height: 100vh;
+  font-family: var(--burn-font);
+  color: var(--burn-text);
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 16px 40px;
+}
+
+/* ── Header ── */
+
+.burn-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0 16px;
+  border-bottom: 1px solid var(--burn-border);
+}
+
+.burn-header-left {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.burn-title {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  color: var(--burn-orange);
+  margin: 0;
+}
+
+.burn-subtitle {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--burn-text-muted);
+}
+
+.burn-header-right {
+  text-align: right;
+}
+
+.burn-weight-display {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.burn-weight-display:hover {
+  background: var(--burn-surface);
+}
+
+.burn-weight-label {
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: var(--burn-text-muted);
+}
+
+.burn-weight-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--burn-text);
+}
+
+/* ── Weight Form ── */
+
+.burn-weight-form {
+  display: flex;
+  gap: 8px;
+  padding: 12px 0;
+}
+
+/* ── Date Navigation ── */
+
+.burn-date-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px 0;
+}
+
+.burn-date-btn {
+  background: var(--burn-surface);
+  border: 1px solid var(--burn-border);
+  color: var(--burn-text);
+  font-family: var(--burn-font);
+  font-size: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.burn-date-btn:hover:not(:disabled) {
+  background: var(--burn-surface-2);
+  border-color: var(--burn-border-light);
+}
+
+.burn-date-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.burn-date-label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--burn-text);
+  min-width: 140px;
+  text-align: center;
+}
+
+/* ── Net Calories Section ── */
+
+.burn-net-section {
+  text-align: center;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--burn-border);
+}
+
+.burn-net-label {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--burn-text-muted);
+  margin-bottom: 4px;
+}
+
+.burn-net-value {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--burn-green);
+  line-height: 1.1;
+}
+
+.burn-net-value.burn-over {
+  color: var(--burn-red);
+}
+
+.burn-net-breakdown {
+  font-size: 11px;
+  color: var(--burn-text-muted);
+  margin-top: 6px;
+  letter-spacing: 1px;
+}
+
+/* ── Macro Progress Bars ── */
+
+.burn-macros-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--burn-border);
+}
+
+.burn-macro-bar {
+  background: var(--burn-surface);
+  border: 1px solid var(--burn-border);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.burn-macro-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.burn-macro-label {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--burn-text-muted);
+  font-weight: 600;
+}
+
+.burn-macro-value {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.burn-macro-target {
+  font-size: 10px;
+  color: var(--burn-text-muted);
+  font-weight: 400;
+}
+
+.burn-macro-over {
+  display: block;
+  font-size: 9px;
+  color: var(--burn-red);
+  letter-spacing: 1px;
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+/* ── Shared Bar Track ── */
+
+.burn-bar-track {
+  height: 6px;
+  background: var(--burn-surface-2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.burn-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+/* ── Water Bar ── */
+
+.burn-water-bar {
+  margin-bottom: 12px;
+}
+
+/* ── Log Sections ── */
+
+.burn-logs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 16px;
+}
+
+.burn-log-section {
+  background: var(--burn-surface);
+  border: 1px solid var(--burn-border);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.burn-log-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.burn-log-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--burn-text);
+}
+
+.burn-water-total {
+  font-size: 12px;
+  color: var(--burn-blue);
+  font-weight: 600;
+}
+
+/* ── Add Button ── */
+
+.burn-add-btn {
+  background: none;
+  border: 1px solid var(--burn-border-light);
+  color: var(--burn-green);
+  font-family: var(--burn-font);
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.burn-add-btn:hover {
+  background: var(--burn-surface-2);
+  border-color: var(--burn-green);
+}
+
+/* ── Add Form ── */
+
+.burn-add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: var(--burn-surface-2);
+  border: 1px solid var(--burn-border);
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.burn-input-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+/* ── Inputs ── */
+
+.burn-input {
+  background: var(--burn-bg);
+  border: 1px solid var(--burn-border);
+  color: var(--burn-text);
+  font-family: var(--burn-font);
+  font-size: 12px;
+  padding: 8px 10px;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.burn-input:focus {
+  border-color: var(--burn-orange);
+}
+
+.burn-input::placeholder {
+  color: var(--burn-text-muted);
+  font-size: 10px;
+}
+
+.burn-input-wide {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Submit Button ── */
+
+.burn-submit-btn {
+  background: var(--burn-orange);
+  border: none;
+  color: #000;
+  font-family: var(--burn-font);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.burn-submit-btn:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.burn-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Entries ── */
+
+.burn-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.burn-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  background: var(--burn-surface-2);
+  border: 1px solid var(--burn-border);
+  border-radius: 6px;
+}
+
+.burn-entry-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.burn-entry-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--burn-text);
+}
+
+.burn-entry-cal {
+  font-size: 11px;
+  color: var(--burn-orange);
+  font-weight: 600;
+}
+
+.burn-entry-macros {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  color: var(--burn-text-muted);
+}
+
+.burn-delete-btn {
+  background: none;
+  border: none;
+  color: var(--burn-text-muted);
+  font-family: var(--burn-font);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 3px;
+  transition: all 0.15s;
+}
+
+.burn-delete-btn:hover {
+  color: var(--burn-red);
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.burn-empty {
+  font-size: 11px;
+  color: var(--burn-text-muted);
+  text-align: center;
+  padding: 12px;
+  letter-spacing: 1px;
+}
+
+/* ── Water Quick Add ── */
+
+.burn-water-quick {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.burn-water-btn {
+  flex: 1;
+  background: var(--burn-surface-2);
+  border: 1px solid var(--burn-border);
+  color: var(--burn-blue);
+  font-family: var(--burn-font);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 8px 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.burn-water-btn:hover:not(:disabled) {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: var(--burn-blue);
+}
+
+.burn-water-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.burn-water-custom {
+  display: flex;
+  gap: 8px;
+}
+
+.burn-water-custom .burn-input {
+  flex: 1;
+}
+
+.burn-water-custom .burn-submit-btn {
+  background: var(--burn-blue);
+  padding: 8px 14px;
+}
+
+/* ── Loading ── */
+
+.burn-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--burn-text-muted);
+  animation: burn-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes burn-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* ── Footer ── */
+
+.burn-footer {
+  text-align: center;
+  padding: 32px 0 16px;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--burn-text-muted);
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 480px) {
+  .burn-app {
+    padding: 0 12px 32px;
+  }
+
+  .burn-header-left {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .burn-title {
+    font-size: 20px;
+  }
+
+  .burn-net-value {
+    font-size: 40px;
+  }
+
+  .burn-macros-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .burn-input-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .burn-water-quick {
+    flex-wrap: wrap;
+  }
+
+  .burn-water-btn {
+    flex: 0 0 calc(33.33% - 4px);
+  }
+}

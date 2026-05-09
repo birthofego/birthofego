@@ -1,14 +1,3 @@
-export type ProjectStatus = 'live' | 'merged' | 'static';
-
-export type Project = {
-  number: string;
-  title: string;
-  description: string;
-  tags: string[];
-  status: ProjectStatus;
-  links: { label: string; href: string }[];
-};
-
 export type Content = {
   brand: { name: string; handle: string; nickname: string };
   nav: { label: string; href: string }[];
@@ -39,7 +28,7 @@ export type Content = {
     terminalStatus: string;
     entries: { key: string; value: string; accent?: boolean }[];
   };
-  projects: { label: string; title: string; items: Project[] };
+  projects: { label: string; title: string };
   stack: { label: string; title: string; items: string[] };
   contact: {
     label: string;
@@ -120,57 +109,11 @@ export const content: Content = {
   projects: {
     label: '// 02 \u2014 PROJECTS',
     title: 'ls ./builds',
-    items: [
-      {
-        number: 'PROJECT_01',
-        title: 'FLAGSHIP SaaS',
-        description: 'A niched full-stack SaaS with auth, Postgres database, Stripe payments, and a polished admin dashboard. Built to be used, not just seen.',
-        tags: ['NEXT.JS', 'TS', 'POSTGRES', 'STRIPE'],
-        status: 'live',
-        links: [
-          { label: '\u2192 live demo', href: '#' },
-          { label: '\u2192 source', href: '#' },
-        ],
-      },
-      {
-        number: 'PROJECT_02',
-        title: 'REAL-TIME CHAT',
-        description: 'WebSocket-powered messaging with rooms, presence indicators, and smooth UX. Proof that state is more than REST.',
-        tags: ['WEBSOCKETS', 'NODE', 'REACT', 'REDIS'],
-        status: 'live',
-        links: [
-          { label: '\u2192 live demo', href: '#' },
-          { label: '\u2192 source', href: '#' },
-        ],
-      },
-      {
-        number: 'PROJECT_03',
-        title: 'OPEN-SOURCE PR',
-        description: 'A merged contribution to a real OSS project. Reading foreign code, following contribution guidelines, shipping in a team codebase.',
-        tags: ['GIT', 'OSS', 'COLLAB'],
-        status: 'merged',
-        links: [
-          { label: '\u2192 view PR', href: '#' },
-          { label: '\u2192 writeup', href: '#' },
-        ],
-      },
-      {
-        number: 'PROJECT_04',
-        title: 'THIS SITE',
-        description: 'Designed and coded by me. No templates. No page builders. A statement of taste as much as a portfolio.',
-        tags: ['DESIGN', 'HTML', 'CSS', 'MOTION'],
-        status: 'live',
-        links: [
-          { label: '\u2192 source', href: '#' },
-          { label: '\u2192 writeup', href: '#' },
-        ],
-      },
-    ],
   },
   stack: {
     label: '// 03 \u2014 STACK',
     title: 'tech --list',
-    items: ['NEXT.JS', 'TYPESCRIPT', 'REACT', 'NODE.JS', 'POSTGRES', 'TAILWIND', 'GIT', 'VERCEL'],
+    items: ['NEXT.JS', 'TYPESCRIPT', 'REACT', 'NODE.JS', 'POSTGRES', 'TAILWIND', 'GIT', 'VERCEL', 'PYTHON', 'C#', 'SWIFT', 'DOCKER', 'REDIS', 'MONGODB', 'REST', 'AWS (BEGINNER)'],
   },
   contact: {
     label: '// 04 \u2014 CONTACT',

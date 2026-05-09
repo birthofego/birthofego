@@ -63,6 +63,97 @@ body::before {
   50% { opacity: 0; }
 }
 
+html.dark,
+html.dark body {
+  --bg: #0e0e0e;
+  --bg-alt: #1a1a1a;
+  --ink: #e8e8e8;
+  --ink-soft: #d4d4d4;
+  --muted: #8a8a8a;
+  --red: #e63946;
+  --red-dark: #ff4d5a;
+  --red-soft: rgba(230, 57, 70, 0.12);
+  --line: #e8e8e8;
+  --line-soft: #2a2a2a;
+  color-scheme: dark;
+}
+
+html.dark body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+html.dark body::before {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1.2px);
+}
+
+html.dark nav {
+  background: rgba(14, 14, 14, 0.92);
+  border-bottom-color: #2a2a2a;
+}
+
+html.dark nav a {
+  color: #8a8a8a;
+}
+
+html.dark nav a:hover {
+  color: #e8e8e8;
+}
+
+html.dark .terminal,
+html.dark .contact-terminal {
+  background: #1a1a1a;
+  border-color: #2a2a2a;
+  box-shadow: 6px 6px 0 #2a2a2a;
+}
+
+html.dark .terminal-bar {
+  background: #2a2a2a;
+}
+
+html.dark .terminal-bar .dot {
+  background: #444;
+}
+
+html.dark .card,
+html.dark .showcase-card {
+  background: #1a1a1a;
+  border-color: #2a2a2a;
+}
+
+html.dark .showcase-card:hover,
+html.dark .card:hover {
+  box-shadow: 8px 8px 0 #2a2a2a;
+}
+
+html.dark .showcase-card.soon {
+  border-color: #2a2a2a;
+}
+
+html.dark .tag,
+html.dark .card-tag {
+  border-color: #3a3a3a;
+  background: #0e0e0e;
+}
+
+html.dark .stack-item {
+  background: #1a1a1a;
+  border-color: #2a2a2a;
+}
+
+html.dark .stack-item:hover {
+  box-shadow: 4px 4px 0 #2a2a2a;
+}
+
+html.dark footer {
+  border-top-color: #2a2a2a;
+}
+
+html.dark .dark-toggle {
+  border-color: #3a3a3a;
+  background: #1a1a1a;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
