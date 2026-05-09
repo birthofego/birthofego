@@ -517,6 +517,13 @@ export default function GooseApp() {
 
   return (
     <div className="goose-app">
+      {/* Mobile rotate prompt */}
+      <div className="goose-rotate-prompt">
+        <div className="rotate-icon">📱↻</div>
+        <div className="rotate-text">ROTATE YOUR PHONE</div>
+        <div className="rotate-sub">This game is best played in landscape</div>
+      </div>
+
       <div className="grain-overlay" />
       <div className="scanline-overlay" />
       <div className="vignette-overlay" />

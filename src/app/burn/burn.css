@@ -1,23 +1,23 @@
 /* ── BURN – Nutrition Tracker Styles ── */
 
 body:has(.burn-app) {
-  background: #08080a;
+  background: #0a0a0f;
   margin: 0;
 }
 
 .burn-app {
-  --burn-bg: #08080a;
-  --burn-surface: #111114;
-  --burn-surface-2: #18181c;
-  --burn-border: #1e1e24;
-  --burn-border-light: #2a2a32;
-  --burn-text: #d4d4d8;
-  --burn-text-muted: #5a5a66;
-  --burn-green: #00d68f;
-  --burn-blue: #3b82f6;
-  --burn-orange: #f59e0b;
-  --burn-purple: #8b5cf6;
-  --burn-red: #ef4444;
+  --burn-bg: #0a0a0f;
+  --burn-surface: #12121a;
+  --burn-surface-2: #1a1a26;
+  --burn-border: #252535;
+  --burn-border-light: #353545;
+  --burn-text: #e8e8f0;
+  --burn-text-muted: #6a6a7a;
+  --burn-green: #00e68a;
+  --burn-blue: #4d9fff;
+  --burn-orange: #ff6b35;
+  --burn-purple: #a855f7;
+  --burn-red: #ff4757;
   --burn-font: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
 
   min-height: 100vh;
@@ -26,6 +26,105 @@ body:has(.burn-app) {
   max-width: 600px;
   margin: 0 auto;
   padding: 0 16px 40px;
+}
+
+/* ── Intro / Disclaimer Flow ── */
+
+.burn-intro {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.burn-intro-card {
+  background: var(--burn-surface);
+  border: 1px solid var(--burn-border);
+  border-radius: 16px;
+  padding: 40px 32px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  animation: burn-card-enter 0.4s ease;
+}
+
+@keyframes burn-card-enter {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.burn-intro-icon {
+  font-size: 56px;
+  margin-bottom: 20px;
+  animation: burn-icon-pulse 2s ease-in-out infinite;
+}
+
+@keyframes burn-icon-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.burn-intro-title {
+  font-family: var(--burn-font);
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 6px;
+  color: var(--burn-orange);
+  margin-bottom: 16px;
+}
+
+.burn-intro-body {
+  font-family: var(--burn-font);
+  font-size: 13px;
+  color: var(--burn-text-muted);
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+.burn-intro-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.burn-intro-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.burn-intro-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--burn-border-light);
+  transition: all 0.3s;
+}
+
+.burn-intro-dot.active {
+  background: var(--burn-orange);
+  box-shadow: 0 0 8px var(--burn-orange);
+}
+
+.burn-intro-btn {
+  font-family: var(--burn-font);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #000;
+  background: linear-gradient(135deg, var(--burn-orange), #ff8c42);
+  border: none;
+  padding: 14px 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(255, 107, 53, 0.3);
+}
+
+.burn-intro-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5);
 }
 
 /* ── Header ── */
@@ -48,7 +147,10 @@ body:has(.burn-app) {
   font-size: 24px;
   font-weight: 700;
   letter-spacing: 6px;
-  color: var(--burn-orange);
+  background: linear-gradient(135deg, var(--burn-orange), #ff8c42);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin: 0;
 }
 
@@ -162,6 +264,7 @@ body:has(.burn-app) {
   font-weight: 700;
   color: var(--burn-green);
   line-height: 1.1;
+  text-shadow: 0 0 20px rgba(0, 230, 138, 0.3);
 }
 
 .burn-net-value.burn-over {
@@ -354,7 +457,7 @@ body:has(.burn-app) {
 /* ── Submit Button ── */
 
 .burn-submit-btn {
-  background: var(--burn-orange);
+  background: linear-gradient(135deg, var(--burn-orange), #ff8c42);
   border: none;
   color: #000;
   font-family: var(--burn-font);
@@ -365,6 +468,7 @@ body:has(.burn-app) {
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.15s;
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
 }
 
 .burn-submit-btn:hover:not(:disabled) {
@@ -495,13 +599,24 @@ body:has(.burn-app) {
 
 .burn-loading {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  gap: 12px;
   font-size: 12px;
   letter-spacing: 3px;
   color: var(--burn-text-muted);
-  animation: burn-pulse 1.5s ease-in-out infinite;
+}
+
+.burn-loading-fire {
+  font-size: 40px;
+  animation: burn-fire-bounce 1s ease-in-out infinite;
+}
+
+@keyframes burn-fire-bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.1); }
 }
 
 @keyframes burn-pulse {
@@ -509,35 +624,7 @@ body:has(.burn-app) {
   50% { opacity: 1; }
 }
 
-/* ── Disclaimer ── */
-
-.burn-disclaimer {
-  margin-top: 24px;
-  padding: 16px;
-  background: var(--burn-surface);
-  border: 1px solid var(--burn-border);
-  border-left: 3px solid var(--burn-orange);
-  border-radius: 6px;
-}
-
-.burn-disclaimer-title {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  color: var(--burn-orange);
-  margin-bottom: 10px;
-}
-
-.burn-disclaimer p {
-  font-size: 12px;
-  color: var(--burn-text-muted);
-  line-height: 1.6;
-  margin-bottom: 8px;
-}
-
-.burn-disclaimer p:last-child {
-  margin-bottom: 0;
-}
+/* ── (Disclaimer moved to intro flow) ── */
 
 /* ── Footer ── */
 
@@ -551,9 +638,14 @@ body:has(.burn-app) {
 
 /* ── Responsive ── */
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .burn-app {
     padding: 0 12px 32px;
+    max-width: 100%;
+  }
+
+  .burn-header {
+    padding: 16px 0 12px;
   }
 
   .burn-header-left {
@@ -566,17 +658,60 @@ body:has(.burn-app) {
   }
 
   .burn-net-value {
-    font-size: 40px;
+    font-size: 36px;
+  }
+
+  .burn-net-section {
+    padding: 16px 0;
   }
 
   .burn-macros-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 8px;
+    padding: 16px 0;
+  }
+
+  .burn-macro-bar {
+    padding: 10px;
+  }
+
+  .burn-macro-label {
+    font-size: 8px;
+  }
+
+  .burn-macro-value {
+    font-size: 12px;
+  }
+
+  .burn-log-section {
+    padding: 12px;
+  }
+
+  .burn-log-title {
+    font-size: 10px;
+  }
+
+  .burn-entry {
+    padding: 8px 10px;
+  }
+
+  .burn-entry-name {
+    font-size: 11px;
+  }
+
+  .burn-entry-macros {
+    font-size: 9px;
+    gap: 6px;
   }
 
   .burn-input-row {
     grid-template-columns: 1fr 1fr;
     gap: 6px;
+  }
+
+  .burn-input {
+    font-size: 13px;
+    padding: 8px;
   }
 
   .burn-water-quick {
@@ -585,5 +720,38 @@ body:has(.burn-app) {
 
   .burn-water-btn {
     flex: 0 0 calc(33.33% - 4px);
+    font-size: 10px;
+    padding: 6px 2px;
+  }
+
+  .burn-date-label {
+    font-size: 12px;
+    min-width: 120px;
+  }
+
+  .burn-intro-card {
+    padding: 32px 20px;
+  }
+
+  .burn-intro-icon {
+    font-size: 44px;
+  }
+
+  .burn-intro-title {
+    font-size: 22px;
+  }
+
+  .burn-intro-body {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .burn-macros-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .burn-net-value {
+    font-size: 32px;
   }
 }

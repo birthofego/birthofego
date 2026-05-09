@@ -10,6 +10,7 @@ export default function EchoApp() {
   const session = useEchoSession();
   const [showInterceptor, setShowInterceptor] = useState(false);
   const [rightPanel, setRightPanel] = useState<'observatory' | 'interceptor'>('observatory');
+  const [mobilePanel, setMobilePanel] = useState(false);
 
   const handleStart = useCallback(async () => {
     await session.connect();
@@ -110,8 +111,16 @@ export default function EchoApp() {
           disabled={session.state !== 'ready'}
         />
 
+        {/* Mobile toggle for observatory */}
+        <button
+          className="echo-mobile-toggle"
+          onClick={() => setMobilePanel(!mobilePanel)}
+        >
+          {mobilePanel ? '← CHAT' : '⚡ CRYPTO'}
+        </button>
+
         {/* Right: Observatory / Interceptor */}
-        <div className="echo-right-panel">
+        <div className={`echo-right-panel${mobilePanel ? ' mobile-visible' : ''}`}>
           <div className="echo-right-tabs">
             <button
               className={`echo-right-tab ${rightPanel === 'observatory' ? 'active' : ''}`}

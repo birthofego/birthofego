@@ -21,12 +21,42 @@ function formatDate(dateStr: string): string {
   return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }).toUpperCase();
 }
 
+const INTRO_STEPS = [
+  {
+    icon: '🔥',
+    title: 'BURN',
+    body: 'A personal nutrition tracker built from scratch.',
+  },
+  {
+    icon: '🛠️',
+    title: 'HOW IT WORKS',
+    body: 'PostgreSQL database hosted on Supabase. Drizzle ORM for type-safe queries. Next.js API routes handle all CRUD operations. This is MY real data — logged daily by me.',
+  },
+  {
+    icon: '📊',
+    title: 'WHAT IT TRACKS',
+    body: 'Calories, protein, carbs, fat, water intake, workouts, and weight over time. All macro targets auto-calculate from body weight.',
+  },
+  {
+    icon: '⚠️',
+    title: 'HEADS UP',
+    body: "If the calorie numbers look low — I know. My appetite has been rough recently due to stress. I promise I'm good, just a rough patch. This is real data, not a demo with fake numbers.",
+  },
+];
+
 export default function BurnApp() {
+  const [introStep, setIntroStep] = useState(0);
+  const [showIntro, setShowIntro] = useState(true);
   const [date, setDate] = useState(todayStr());
   const [data, setData] = useState<DaySummary | null>(null);
   const [loading, setLoading] = useState(true);
   const [weightInput, setWeightInput] = useState('');
   const [showWeightForm, setShowWeightForm] = useState(false);
+
+  useEffect(() => {
+    const seen = sessionStorage.getItem('burn_intro_seen');
+    if (seen) setShowIntro(false);
+  }, []);
 
   const fetchDay = useCallback(async () => {
     setLoading(true);
@@ -41,8 +71,8 @@ export default function BurnApp() {
   }, [date]);
 
   useEffect(() => {
-    fetchDay();
-  }, [fetchDay]);
+    if (!showIntro) fetchDay();
+  }, [fetchDay, showIntro]);
 
   const navigateDay = (offset: number) => {
     const d = new Date(date + 'T12:00:00');
@@ -64,10 +94,48 @@ export default function BurnApp() {
     fetchDay();
   };
 
+  const advanceIntro = () => {
+    if (introStep < INTRO_STEPS.length - 1) {
+      setIntroStep(introStep + 1);
+    } else {
+      sessionStorage.setItem('burn_intro_seen', 'true');
+      setShowIntro(false);
+    }
+  };
+
+  // ── Intro / Disclaimer Flow ──
+  if (showIntro) {
+    const step = INTRO_STEPS[introStep];
+    return (
+      <div className="burn-app">
+        <div className="burn-intro">
+          <div className="burn-intro-card" key={introStep}>
+            <div className="burn-intro-icon">{step.icon}</div>
+            <h2 className="burn-intro-title">{step.title}</h2>
+            <p className="burn-intro-body">{step.body}</p>
+            <div className="burn-intro-footer">
+              <div className="burn-intro-dots">
+                {INTRO_STEPS.map((_, i) => (
+                  <span key={i} className={`burn-intro-dot ${i === introStep ? 'active' : ''}`} />
+                ))}
+              </div>
+              <button className="burn-intro-btn" onClick={advanceIntro}>
+                {introStep < INTRO_STEPS.length - 1 ? 'NEXT →' : 'LET\'S GO 🔥'}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (loading && !data) {
     return (
       <div className="burn-app">
-        <div className="burn-loading">Loading...</div>
+        <div className="burn-loading">
+          <span className="burn-loading-fire">🔥</span>
+          <span>LOADING...</span>
+        </div>
       </div>
     );
   }
@@ -80,7 +148,7 @@ export default function BurnApp() {
       {/* Header */}
       <header className="burn-header">
         <div className="burn-header-left">
-          <h1 className="burn-title">BURN</h1>
+          <h1 className="burn-title">🔥 BURN</h1>
           <span className="burn-subtitle">NUTRITION TRACKER</span>
         </div>
         <div className="burn-header-right">
@@ -135,10 +203,10 @@ export default function BurnApp() {
       {/* Macro Progress Bars */}
       {t && targets && (
         <div className="burn-macros-grid">
-          <MacroBar label="CALORIES" current={t.calories} target={targets.calories} unit=" cal" color="#f59e0b" isCeiling />
+          <MacroBar label="CALORIES" current={t.calories} target={targets.calories} unit=" cal" color="#ff6b35" isCeiling />
           <MacroBar label="PROTEIN" current={t.protein} target={targets.protein} unit="g" color="#00d68f" />
           <MacroBar label="CARBS" current={t.carbs} target={targets.carbs} unit="g" color="#3b82f6" isCeiling />
-          <MacroBar label="FAT" current={t.fat} target={targets.fat} unit="g" color="#8b5cf6" isCeiling />
+          <MacroBar label="FAT" current={t.fat} target={targets.fat} unit="g" color="#a855f7" isCeiling />
         </div>
       )}
 
@@ -169,16 +237,9 @@ export default function BurnApp() {
         )}
       </div>
 
-      {/* Disclaimer */}
-      <div className="burn-disclaimer">
-        <p className="burn-disclaimer-title">A NOTE FROM THE DEVELOPER</p>
-        <p>This project was built to demonstrate my knowledge and expertise working with PostgreSQL, Drizzle ORM, and full-stack API design. It is actively used by me to track my own nutrition and fitness.</p>
-        <p>If the calorie numbers look low — I know. My appetite has been pretty poor recently due to stress, and it has been affecting how much I eat. I promise I am doing good and I am not starving myself. Just a rough patch. I appreciate the concern.</p>
-      </div>
-
       {/* Footer */}
       <footer className="burn-footer">
-        <span>BURN — a birthofego project</span>
+        <span>🔥 BURN — a birthofego project</span>
       </footer>
     </div>
   );
