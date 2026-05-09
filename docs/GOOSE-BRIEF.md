@@ -1,8 +1,8 @@
 # GOOSE — Build Brief
 
-> **Audience:** A coding agent, working inside the existing `birthofego` Next.js portfolio repo.
-> **Author of intent:** Ego (`@birthofego`).
-> **Mode:** Build a small browser game that lives at `/goose` and slots into the portfolio's projects grid as `PROJECT_06`.
+> **Project:** A small browser game that lives at `/goose` inside the `birthofego` Next.js portfolio repo.
+> **Author:** Ego (`@birthofego`).
+> **Goal:** Build a browser game that slots into the portfolio's projects grid as `PROJECT_06`.
 
 ---
 
