@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Press_Start_2P, VT323 } from 'next/font/google';
+import PasswordGate from '@/components/PasswordGate';
 import './globals.css';
 
 const pressStart = Press_Start_2P({
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${pressStart.variable} ${vt323.variable}`}>
-      <body>{children}</body>
+      <body><PasswordGate>{children}</PasswordGate></body>
     </html>
   );
 }
