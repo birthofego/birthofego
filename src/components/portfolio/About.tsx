@@ -83,6 +83,11 @@ export function About() {
                 </div>
 
                 <div className="about-chapter">
+                  <span className="about-chapter-tag">AGE 22 — REALITY CHECK</span>
+                  <p>{a2.p6b}</p>
+                </div>
+
+                <div className="about-chapter">
                   <span className="about-chapter-tag">AGE 24 — NOW</span>
                   <p>{a2.p7}</p>
                 </div>
@@ -93,15 +98,15 @@ export function About() {
 
                 <div className="about-divider" />
 
-                {/* Realness */}
+                {/* The self-taught journey */}
                 <div className="about-chapter">
-                  <span className="about-chapter-tag">MORE PERSONAL INFORMATION ABOUT ME</span>
-                  <p>{a2.p8}</p>
+                  <span className="about-chapter-tag">THE SELF-TAUGHT JOURNEY</span>
+                  <p>{a2.p7b}</p>
                 </div>
 
                 <div className="about-chapter">
-                  <span className="about-chapter-tag">ON AI</span>
-                  <p>{a2.p9}</p>
+                  <span className="about-chapter-tag">THE PROOF IS IN THE WORK</span>
+                  <p>{a2.p8}</p>
                 </div>
 
                 <div className="about-divider" />
@@ -109,7 +114,8 @@ export function About() {
                 {/* Closing */}
                 <div className="about-chapter">
                   <span className="about-chapter-tag">THE PERSON BEHIND THE CODE</span>
-                  <p>{a2.p10}</p>
+                  <p>{a2.p9}</p>
+                  <p style={{ marginTop: '18px' }}>{a2.p10}</p>
                 </div>
 
                 <p className="about-closing">{a2.closing}</p>
