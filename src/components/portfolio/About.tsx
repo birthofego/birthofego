@@ -90,6 +90,7 @@ export function About() {
                 <div className="about-chapter">
                   <span className="about-chapter-tag">AGE 24 — NOW</span>
                   <p>{a2.p7}</p>
+                  <p style={{ marginTop: '18px' }}>{a2.p7c}</p>
                 </div>
 
                 <div className="about-pullquote">
@@ -102,11 +103,7 @@ export function About() {
                 <div className="about-chapter">
                   <span className="about-chapter-tag">THE SELF-TAUGHT JOURNEY</span>
                   <p>{a2.p7b}</p>
-                </div>
-
-                <div className="about-chapter">
-                  <span className="about-chapter-tag">THE PROOF IS IN THE WORK</span>
-                  <p>{a2.p8}</p>
+                  <p style={{ marginTop: '18px' }}>{a2.p8}</p>
                 </div>
 
                 <div className="about-divider" />
