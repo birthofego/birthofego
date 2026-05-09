@@ -3,13 +3,16 @@
 import { useState, useEffect } from 'react';
 
 export function DarkModeToggle() {
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(true);
 
   useEffect(() => {
     const saved = localStorage.getItem('birthofego-theme');
-    if (saved === 'dark') {
-      setDark(true);
+    if (saved === 'light') {
+      setDark(false);
+      document.documentElement.classList.remove('dark');
+    } else {
       document.documentElement.classList.add('dark');
+      localStorage.setItem('birthofego-theme', 'dark');
     }
   }, []);
 

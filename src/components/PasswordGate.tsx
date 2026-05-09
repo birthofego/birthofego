@@ -17,9 +17,17 @@ export default function PasswordGate({ children }: { children: React.ReactNode }
   const [input, setInput] = useState('');
   const [error, setError] = useState(false);
   const [booting, setBooting] = useState(true);
+  const [unlocking, setUnlocking] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
+    // Default to dark mode
+    const saved = localStorage.getItem('birthofego-theme');
+    if (!saved || saved === 'dark') {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('birthofego-theme', 'dark');
+    }
+
     const stored = localStorage.getItem('boe_auth');
     if (stored === 'true') {
       setAuthenticated(true);
@@ -31,17 +39,18 @@ export default function PasswordGate({ children }: { children: React.ReactNode }
   }, []);
 
   useEffect(() => {
-    if (!booting && !authenticated && inputRef.current) {
+    if (!booting && !authenticated && !unlocking && inputRef.current) {
       inputRef.current.focus();
     }
-  }, [booting, authenticated]);
+  }, [booting, authenticated, unlocking]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const hash = await sha256(input.trim().toLowerCase());
     if (hash === PASS_HASH) {
       localStorage.setItem('boe_auth', 'true');
-      setAuthenticated(true);
+      setUnlocking(true);
+      setTimeout(() => setAuthenticated(true), 2800);
     } else {
       setError(true);
       setInput('');
@@ -57,7 +66,17 @@ export default function PasswordGate({ children }: { children: React.ReactNode }
       <div className="gate-screen" onClick={() => inputRef.current?.focus()}>
         <div className="gate-scanline" />
         <div className="gate-container">
-          {booting ? (
+          {unlocking ? (
+            <div className="gate-unlock">
+              <p className="gate-unlock-line"><span className="gate-ok">[OK]</span> Access key accepted.</p>
+              <p className="gate-unlock-line"><span className="gate-ok">[OK]</span> Decrypting session ...</p>
+              <p className="gate-unlock-line"><span className="gate-ok">[OK]</span> Loading portfolio modules ...</p>
+              <div className="gate-unlock-bar-wrap">
+                <div className="gate-unlock-bar" />
+              </div>
+              <p className="gate-unlock-line gate-unlock-welcome">Welcome, visitor.</p>
+            </div>
+          ) : booting ? (
             <div className="gate-boot">
               <p className="gate-boot-line">BIOS v2.4.1 ... <span className="gate-ok">OK</span></p>
               <p className="gate-boot-line">Memory check ... <span className="gate-ok">32768K OK</span></p>
@@ -235,6 +254,59 @@ export default function PasswordGate({ children }: { children: React.ReactNode }
           font-size: 14px;
           color: #e63946;
           animation: gate-shake 0.3s ease;
+        }
+
+        /* Unlock sequence */
+        .gate-unlock {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .gate-unlock-line {
+          font-family: var(--font-terminal), 'Courier New', monospace;
+          font-size: 15px;
+          color: #4ade80;
+          opacity: 0;
+          animation: gate-type-in 0.3s ease forwards;
+        }
+
+        .gate-unlock-line:nth-child(1) { animation-delay: 0.0s; }
+        .gate-unlock-line:nth-child(2) { animation-delay: 0.4s; }
+        .gate-unlock-line:nth-child(3) { animation-delay: 0.8s; }
+        .gate-unlock-bar-wrap {
+          opacity: 0;
+          animation: gate-type-in 0.3s ease forwards;
+          animation-delay: 1.1s;
+        }
+        .gate-unlock-welcome {
+          animation-delay: 2.2s !important;
+          color: #e63946 !important;
+          font-size: 18px !important;
+          margin-top: 8px;
+          letter-spacing: 2px;
+        }
+
+        .gate-unlock-bar-wrap {
+          height: 4px;
+          background: #1a1a1a;
+          border-radius: 2px;
+          overflow: hidden;
+          margin: 8px 0;
+        }
+
+        .gate-unlock-bar {
+          height: 100%;
+          width: 0%;
+          background: linear-gradient(90deg, #4ade80, #22c55e);
+          border-radius: 2px;
+          animation: gate-load-bar 1.0s ease forwards;
+          animation-delay: 1.2s;
+        }
+
+        @keyframes gate-load-bar {
+          from { width: 0%; }
+          to { width: 100%; }
         }
 
         @keyframes gate-type-in {

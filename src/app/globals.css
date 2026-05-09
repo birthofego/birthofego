@@ -38,15 +38,17 @@
   padding: 0;
 }
 
-html,
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-terminal), monospace;
   font-size: 20px;
   line-height: 1.5;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body::before {
