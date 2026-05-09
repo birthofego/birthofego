@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import GooseApp from '@/components/goose/GooseApp';
+import BackToPortfolio from '@/components/ui/BackToPortfolio';
 import './goose.css';
 
 export const metadata: Metadata = {
@@ -8,5 +9,10 @@ export const metadata: Metadata = {
 };
 
 export default function GoosePage() {
-  return <GooseApp />;
+  return (
+    <>
+      <BackToPortfolio />
+      <GooseApp />
+    </>
+  );
 }

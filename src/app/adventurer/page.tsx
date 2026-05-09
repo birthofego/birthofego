@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import AdventurerApp from '@/components/adventurer/AdventurerApp';
+import BackToPortfolio from '@/components/ui/BackToPortfolio';
 import './adventurer.css';
 
 const inter = Inter({
@@ -23,6 +24,7 @@ export const metadata: Metadata = {
 export default function AdventurerPage() {
   return (
     <div className={`${inter.variable} ${jetbrainsMono.variable}`}>
+      <BackToPortfolio />
       <AdventurerApp />
     </div>
   );

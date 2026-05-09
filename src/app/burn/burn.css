@@ -509,6 +509,36 @@ body:has(.burn-app) {
   50% { opacity: 1; }
 }
 
+/* ── Disclaimer ── */
+
+.burn-disclaimer {
+  margin-top: 24px;
+  padding: 16px;
+  background: var(--burn-surface);
+  border: 1px solid var(--burn-border);
+  border-left: 3px solid var(--burn-orange);
+  border-radius: 6px;
+}
+
+.burn-disclaimer-title {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--burn-orange);
+  margin-bottom: 10px;
+}
+
+.burn-disclaimer p {
+  font-size: 12px;
+  color: var(--burn-text-muted);
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.burn-disclaimer p:last-child {
+  margin-bottom: 0;
+}
+
 /* ── Footer ── */
 
 .burn-footer {

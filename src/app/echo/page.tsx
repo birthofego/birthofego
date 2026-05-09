@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import EchoApp from '@/components/echo/EchoApp';
+import BackToPortfolio from '@/components/ui/BackToPortfolio';
 import './echo.css';
 
 export const metadata: Metadata = {
@@ -8,5 +9,10 @@ export const metadata: Metadata = {
 };
 
 export default function EchoPage() {
-  return <EchoApp />;
+  return (
+    <>
+      <BackToPortfolio />
+      <EchoApp />
+    </>
+  );
 }

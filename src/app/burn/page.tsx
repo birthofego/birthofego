@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import BurnApp from '@/components/burn/BurnApp';
+import BackToPortfolio from '@/components/ui/BackToPortfolio';
 import './burn.css';
 
 export const metadata: Metadata = {
@@ -8,5 +9,10 @@ export const metadata: Metadata = {
 };
 
 export default function BurnPage() {
-  return <BurnApp />;
+  return (
+    <>
+      <BackToPortfolio />
+      <BurnApp />
+    </>
+  );
 }

@@ -169,6 +169,13 @@ export default function BurnApp() {
         )}
       </div>
 
+      {/* Disclaimer */}
+      <div className="burn-disclaimer">
+        <p className="burn-disclaimer-title">A NOTE FROM THE DEVELOPER</p>
+        <p>This project was built to demonstrate my knowledge and expertise working with PostgreSQL, Drizzle ORM, and full-stack API design. It is actively used by me to track my own nutrition and fitness.</p>
+        <p>If the calorie numbers look low — I know. My appetite has been pretty poor recently due to stress, and it has been affecting how much I eat. I promise I am doing good and I am not starving myself. Just a rough patch. I appreciate the concern.</p>
+      </div>
+
       {/* Footer */}
       <footer className="burn-footer">
         <span>BURN — a birthofego project</span>
