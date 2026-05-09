@@ -90,11 +90,6 @@ export function About() {
                 <div className="about-chapter">
                   <span className="about-chapter-tag">AGE 24 — NOW</span>
                   <p>{a2.p7}</p>
-                  <p style={{ marginTop: '18px' }}>{a2.p7c}</p>
-                </div>
-
-                <div className="about-pullquote">
-                  &ldquo;Challenges aren&rsquo;t roadblocks — they&rsquo;re locked doors.&rdquo;
                 </div>
 
                 <div className="about-divider" />
