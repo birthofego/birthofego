@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   description: 'Ego — full-stack developer. Motivated, eager, and ready to show the world what I can build.',
   openGraph: {
     title: 'birthofego',
-    description: 'Ego just means self — and the confidence to back it up.',
+    description: 'Portfolio website by Sha\'Non',
   },
 };
 
