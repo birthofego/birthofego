@@ -7,10 +7,11 @@ import { Contact } from '@/components/portfolio/Contact';
 import { Footer } from '@/components/portfolio/Footer';
 import { AsciiDivider } from '@/components/ui/AsciiDivider';
 import { RegMarks } from '@/components/ui/RegMarks';
+import PasswordGate from '@/components/PasswordGate';
 
 export default function Page() {
   return (
-    <>
+    <PasswordGate>
       <RegMarks />
       <Nav />
       <main style={{ maxWidth: 1280, margin: '0 auto', padding: '0 48px', position: 'relative', zIndex: 1 }}>
@@ -25,6 +26,6 @@ export default function Page() {
         <Contact />
       </main>
       <Footer />
-    </>
+    </PasswordGate>
   );
 }
