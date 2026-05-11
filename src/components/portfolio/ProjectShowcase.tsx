@@ -27,13 +27,6 @@ const PROJECTS = [
   },
   {
     number: 'PROJECT_04',
-    title: 'BURN',
-    description: 'Nutrition and fitness tracker with real-time macro monitoring, net calorie tracking, workout logging, and dynamic hydration goals.',
-    tags: ['NEXT.JS', 'POSTGRESQL', 'DRIZZLE ORM', 'TS'],
-    href: '/burn',
-  },
-  {
-    number: 'PROJECT_05',
     title: 'THIS WEBSITE',
     description: 'The portfolio you\'re looking at right now. Built from scratch with no templates — password-gated, dark mode, custom terminal aesthetic, deployed on Netlify.',
     tags: ['NEXT.JS', 'TYPESCRIPT', 'CSS', 'NETLIFY'],
@@ -61,7 +54,7 @@ function LiveCard({ project }: { project: typeof PROJECTS[number] }) {
         ))}
       </div>
       <div className="card-footer-row">
-        <a href={project.href} className="card-link">&rarr; {project.title === 'GOOSE' ? 'play' : project.title === 'ECHO' ? 'demo' : project.title === 'BURN' ? 'track' : project.title === 'THIS WEBSITE' ? 'you\'re here' : 'live demo'}</a>
+        <a href={project.href} className="card-link">&rarr; {project.title === 'GOOSE' ? 'play' : project.title === 'ECHO' ? 'demo' : project.title === 'THIS WEBSITE' ? 'you\'re here' : 'live demo'}</a>
         <a href="#" className="card-link">&rarr; source</a>
       </div>
     </article>
